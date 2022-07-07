@@ -1,0 +1,18 @@
+For original mhd
+1. In lung-preprocessing folder, Run prepare_dataset.py to prepare .npy file dataset for original dataset. It creates data folder, data with Clean, Image and Mask folders and .npy files. This file contains all the slices created for with subnames NI, MA, CN and CM with .npy extension. A file called meta_info.csv is also created within the Meta folder within the data folder. 
+2.  In lung-preprocessing folder, Run make_label.ipynb file to create the labels validate, test, train on the meta_info.csv. It also creates two files, meta.csv and clean_meta.csv. The meta.csv contains the noduled slices which are divided into test, train and validation datasets. The clean_meta.csv contains the clean slices which are divided into test, train and validation datasets. 
+3.  In lung-segmentation folder,Run train.py. Check the path of meta.csv and the clean_meta.csv files.The output of this training, model.pth and log.csv will be stored in model_output folder.
+4. Run validate.py. This will use the meta.csv and clean_meta.csv files to pick up the validation data and create prediction outputs for the data.
+5. Run view_output.ipynb to view the results of the segmentation.
+
+
+
+For piv mhd
+
+1. Run prepare_mhdforpiv.py to prepare .mhd file datasets (with extra slice) for PIV based processing. It creates data folder, dataforpiv with Clean, Image and Mask folders and .mhd files. It also creates Meta folder with meta_info.csv file. This file contains all the slices created for with subnames NI, MA, CN and CM.
+2. Run ProcessOriginalMHDtoPIV_PH.ijm from the Fiji or ImageJ application with proper paths to create .mhd file datasets after PIV based processing. It creates data folder, data_pivmhd_4x4 ith Clean, Image and Mask folders and .mhd files. This file contains all the slices created for with subnames NI, MA, CN and CM with .mhd extension.
+3. Run prepare_dataset_npyforpiv_automate.py to convert .mhd files to .npy files. It creates data folder, data_pivnpy_4x4 with Clean, Image and Mask folders and .npy files. This file contains all the slices created for with subnames NI, MA, CN and CM with .npy extension.
+4. In lung-preprocessing folder, Run make_label.ipynb file to create the labels validate, test, train on the meta_info.csv. It also creates two files, meta.csv and clean_meta.csv. The meta.csv contains the noduled slices which are divided into test, train and validation datasets. The clean_meta.csv contains the clean slices which are divided into test, train and validation datasets.
+5. In lung-segmentation folder,Run train.py. Check the path of meta.csv and the clean_meta.csv files. The output of this training, model.pth and log.csv will be stored in model_output folder. 
+6. Run validate.py. This will use the meta.csv and clean_meta.csv files to pick up the validation data and create prediction outputs for the data.
+7. Run view_output.ipynb to view the results of the segmentation.
